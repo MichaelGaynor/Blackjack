@@ -1,6 +1,19 @@
 /* h1{
   color: blue;
 } */
+@keyframes hoverBoard{
+  0%{margin-top:35px;}
+  50%{margin-top:50px;}
+  100%{margin-top:35px;}
+}
+
+@keyframes pulse{
+  0%{text-shadow: 0 0 20px magenta;}
+  30%{text-shadow: 0 -1px 5px magenta;}
+  45%{text-shadow: 0 1px 30px magenta;}
+  100%{text-shadow: 0 0 20px magenta;}
+}
+
 @font-face {
     font-family: "Broadway-Engraved";
     src: url("images/BER.otf") format("opentype");
@@ -50,12 +63,6 @@ body{
   animation: hoverBoard 5s infinite;
 }
 
-@keyframes hoverBoard{
-  0%{margin-top:35px;}
-  50%{margin-top:50px;}
-  100%{margin-top:35px;}
-}
-
 .perspective{
     perspective: 400px;
 }
@@ -80,11 +87,12 @@ body{
   border: 2px solid magenta;
   box-shadow: 0 0 10px 3px magenta;
   color: magenta;
-  text-shadow: 0 0 5px magenta;
+  text-shadow: 0 0 20px magenta;
   /* background-color: magenta; */
   font-size: 35px;
   text-align: center;
   padding: 5px;
+  /* animation: pulse .1s; */
 }
 .dealer-cards > .card{
   transform: scale(-1, -1);
