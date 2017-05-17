@@ -1,33 +1,21 @@
 $(document).ready(function(){
     // console.log("sanity check");
-    // --------------------------------------
-    // ----------MAIN FUNCTION VARS----------
-    // --------------------------------------
     const freshDeck = createDeck();
-    var theDeck = freshDeck;
+    var theDeck = freshDeck.slice();
     var playersHand = [];
     var dealersHand = [];
+    var spade = "&#9824;";
+    var club = "&#9827;";
+    var heart = "&#9829;";
+    var diamond = "&#9830;";
 
-    function createDeck(){
-    // Local var, newDeck. No one knows about this but me
-        var newDeck = [];
-        // local var that WILL NOT be changed
-        const suits = ["h","s","d","c"];
-        // loop for suits(outer loop)
-        for (let s=0; s<suits.length; s++){
-            // loop for card values (inner loop)
-            for (let c=1;c<=13;c++){
-                newDeck.push(c + suits[s]);
-            }
-        }
-        return newDeck;
-    }
-
-
-
+///////////////////////////////////////////////
+///////////////////////////////////////////////
+/////////////// BUTTON EVENTS /////////////////
+///////////////////////////////////////////////
+///////////////////////////////////////////////
     $(".deal-button").click(function(){
-        console.log("User clicked deal");
-        theDeck = shuffleDeck();
+        reset();
         // Now that the deck is shuffled, update the player and dealer hands
         playersHand.push(theDeck.shift());
         dealersHand.push(theDeck.shift());
@@ -42,14 +30,14 @@ $(document).ready(function(){
     });
 
     $(".hit-button").click(function(){
-        console.log("User clicked hit");
-        playersHand.push(theDeck.shift());
-        placeCard("player",playersHand.length,playersHand[playersHand.length-1]);
-        calculateTotal(playersHand,"player");
+        if (calculateTotal(playersHand, "player") < 21){
+            playersHand.push(theDeck.shift());
+            placeCard("player",playersHand.length,playersHand[playersHand.length-1]);
+            calculateTotal(playersHand,"player");
+        }
     });
 
     $(".stand-button").click(function(){
-        console.log("Clicked stand");
         var dealerTotal = calculateTotal(dealersHand,"dealer");
         while(dealerTotal < 17){
             dealersHand.push(theDeck.shift());
@@ -60,39 +48,105 @@ $(document).ready(function(){
     });
 
 
+///////////////////////////////////////////////
+///////////////////////////////////////////////
+/////////// UTILITY FUNCTIONS /////////////////
+///////////////////////////////////////////////
+///////////////////////////////////////////////
+    // function reset(){
+    //     theDeck = freshDeck.slice();
+    //     shuffleDeck();
+    //     playersHand = [];
+    //     dealersHand = [];
+    //     $(".card").html("")
+    //     $(".dealer-total-number").html("0");
+    //     $(".dealer-total-number").html("0");
+    //     $(".message").text("");
+    // };
+
+    function reset(){
+        theDeck = freshDeck.slice();
+        shuffleDeck();
+        playersHand = [];
+        dealersHand = [];
+        $(".card").html("")
+        $(".dealer-total-number").html("0");
+        $(".dealer-total-number").html("0");
+        $(".message").text("");
+        $(".card").removeClass("card-present");
+    };
+
     function checkWin(){
         var playerTotal = calculateTotal(playersHand,"player");
         var dealerTotal = calculateTotal(dealersHand,"dealer");
         if (playerTotal > 21){
-            console.log("Player busts and loses")
+            winner = "Player busts and loses";
         } else if (dealerTotal > 21){
-            console.log("Dealer busts, player wins")
+            winner = "Dealer busts, player wins";
         } else if (playerTotal > dealerTotal){
-            console.log("Player wins")
+            winner = "Player wins";
         } else if (dealerTotal > playerTotal){
-            console.log("Player loses")
+            winner = "Player loses"
         } else{
-            console.log("It's a tie. Both of you lose.")
+            winner = "It's a tie. Both of you lose.";
         }
-    }
+        $(".message").text(winner);
+    };
 
     function calculateTotal(hand,who){
-        // console.log(hand);
         var total = 0;
         var thisCardValue = 0;
+        var hasAce = false;
+        var totalAces = 0;
         for (let i=0;i<hand.length;i++){
             thisCardValue = Number(hand[i].slice(0,-1));
+            if (thisCardValue > 10){
+                thisCardValue = 10;
+            } else if(thisCardValue == 1){
+                hasAce = true;
+                totalAces++;
+                thisCardValue = 11;
+            }
             total += thisCardValue;
+        }
+        for (let i=0; i<totalAces; i++){
+            if(total > 21){
+                total -= 10
+            }
         }
         var classSelector = "." +who+ "-total-count";
         $(classSelector).html(total);
         return total;
-    }
+    };
 
     function placeCard(who,where,cardToPlace){
         var classSelector = "." +who+ "-cards .card-" +where;
-        $(classSelector).html("<img src='images/" +cardToPlace+ ".png'>");
-    }
+        var thisCardValue = cardToPlace.slice(0,-1);
+        if (thisCardValue === "1"){
+            thisCardValue = "A"
+        } else if(thisCardValue === "11"){
+            thisCardValue = "J"
+        } else if(thisCardValue === "12"){
+            thisCardValue = "Q"
+        } else if(thisCardValue === "13"){
+            thisCardValue = "K"
+        };
+        var theSuit = cardToPlace.slice(-1);
+        var theSymbol = "";
+        if (theSuit === "s"){
+            theSymbol = spade
+        } else if (theSuit === "c"){
+            theSymbol = club
+        } else if (theSuit === "h"){
+            theSymbol = heart
+        } else{
+            theSymbol = diamond
+        };
+        $(classSelector).html(thisCardValue +"<br>"+ theSymbol);
+        $(classSelector).addClass("card-present");
+        
+        // $(classSelector).text(thisCardValue + theSymbol);
+    };
 
     function shuffleDeck(){
         // loop a big number of times, each time through switch two elements in the array
@@ -104,5 +158,20 @@ $(document).ready(function(){
             theDeck[randomCard2] = temp;
         }
         return theDeck;
-    }
+    };
+
+    function createDeck(){
+    // Local var, newDeck. No one knows about this but me
+        var newDeck = [];
+        // local var that WILL NOT be changed
+        const suits = ["h","s","d","c"];
+        // loop for suits(outer loop)
+        for (let s=0; s<suits.length; s++){
+            // loop for card values (inner loop)
+            for (let c=1;c<=13;c++){
+                newDeck.push(c + suits[s]);
+            }
+        }
+        return newDeck;
+    };
 });

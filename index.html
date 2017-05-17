@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Blackjack in jQuery/JavaScript</title>
+    <title>Blackjack</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -10,40 +10,33 @@
 </head>
 <body>
 
-<!-- LAYOUT -->
-<!-- 1. Create an element for our table
--a. Make it green
--b. Give it a white border
-2. Create an element for the dealer's hand and the player's hand
-3. Create an element for the dealer's total and the players total
-4. Create an element for each card in each hand, maximum of 6 cards
-5. Make a deal, hit, and stand button -->
-
-<div class="container">
+<div class="container perspective">
+    <div class="row totals">
+        <div class="col-sm-3 dealer-total">
+            <p>Dealer Total: <span class="dealer-total-count">0</span></p>
+        </div>
+        <div class="col-sm-3 col-sm-offset-2 player-total">
+            <p>Player Total: <span class="player-total-count">0</span></p>
+        </div>
+    </div>
     <div class="row">
         <div class="col-sm-12 the-table">
             <!-- <H1>Sanity Check</H1> -->
             <div class="row">
                 <div class="col-sm-12 dealer-hand-wrapper">
-                    <div class="col-sm-2 dealer-total">
-                        <i>Dealer Total: <span class="dealer-total-count">0</span></i>
-                    </div>
-                    <div class="col-sm-10 dealer-cards">
-                        <div class="card card-1"></div>
-                        <div class="card card-2"></div>
-                        <div class="card card-3"></div>
-                        <div class="card card-4"></div>
-                        <div class="card card-5"></div>
+                    <div class="col-sm-10 col-sm-offset-1 dealer-cards">
                         <div class="card card-6"></div>
+                        <div class="card card-5"></div>
+                        <div class="card card-4"></div>
+                        <div class="card card-3"></div>
+                        <div class="card card-2"></div>
+                        <div class="card card-1"></div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12 player-hand-wrapper">
-                    <div class="col-sm-2 player-total">
-                        <i>Player Total: <span class="player-total-count">0</span></i>
-                    </div>
-                    <div class="col-sm-10 player-cards">
+                    <div class="col-sm-10 col-sm-offset-2 player-cards">
                         <div class="card card-1"></div>
                         <div class="card card-2"></div>
                         <div class="card card-3"></div>
@@ -54,17 +47,18 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-2 col-sm-offset-2">
-                    <button class="btn btn-primary deal-button">Deal</button>
+                <div class="col-sm-2 col-sm-offset-3">
+                    <button class="btn deal-button">Deal</button>
                 </div>
-                <div class="col-sm-2 col-sm-offset-1 hit-button">
-                    <button class="btn btn-danger">Hit</button>
+                <div class="col-sm-2">
+                    <button class="btn hit-button">Hit</button>
                 </div>
-                <div class="col-sm-2 col-sm-offset-1 stand-button">
-                    <button class="btn btn-warning">stand</button>
+                <div class="col-sm-2">
+                    <button class="btn stand-button">stand</button>
                 </div>
             </div>
         </div>
+        <div class="message"></div>
     </div>
 </div>
 
