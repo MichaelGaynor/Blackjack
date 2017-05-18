@@ -144,6 +144,8 @@ $(document).ready(function(){
         };
         $(classSelector).html(thisCardValue +"<br>"+ theSymbol);
         $(classSelector).addClass("card-present");
+        $(classSelector).addClass("flicker");
+        setInterval(function(){ ($(classSelector).removeClass("flicker")); }, 250);
         
         // $(classSelector).text(thisCardValue + theSymbol);
     };

@@ -8,10 +8,12 @@
 }
 
 @keyframes pulse{
-  0%{text-shadow: 0 0 20px magenta;}
-  30%{text-shadow: 0 -1px 5px magenta;}
-  45%{text-shadow: 0 1px 30px magenta;}
-  100%{text-shadow: 0 0 20px magenta;}
+  0%{text-shadow: 0 0 20px magenta; color: rgba(0,0,0,0); border-color: rgba(0,0,0,0);}
+  100%{text-shadow: 0 -1px 5px magenta; color: rgba(255,0,255,.8); border-color: rgba(255,0,255,.8);}
+}
+
+.flicker{
+  animation: pulse .1s infinite;
 }
 
 @font-face {
