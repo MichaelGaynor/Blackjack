@@ -28,7 +28,9 @@
 }
 
 body{
-    background-color:black;
+    /* background-color:black; */
+    background-image: url("https://s-media-cache-ak0.pinimg.com/originals/c3/51/0c/c3510cff5dc5e339d1f1ae125ab86879.jpg");
+    background-size: cover;
     font-weight: lighter;
     font-family: "Courier New";
     font-size: 20px;
@@ -71,13 +73,14 @@ body{
     linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
     linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
     linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
-background-color: #131313;
-background-size: 20px 20px;
-  transform: rotateX(30deg);
+  background-color: #131313;
+  background-size: 20px 20px;
+  transform: rotateX(45deg);
   animation: hoverBoard 5s infinite;
 }
 
 .perspective{
+  margin-top: 50px;
     perspective: 400px;
 }
 
