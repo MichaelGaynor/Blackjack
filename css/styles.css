@@ -23,6 +23,9 @@
 
 body{
     background-color:black;
+    font-weight: lighter;
+    font-family: "Courier New";
+    font-size: 20px;
 }
 
 .message{
@@ -30,9 +33,6 @@ body{
   text-shadow: 0 0 5px cyan;
   text-align: center;
   position: fixed;
-  font-weight: lighter;
-  font-family: "Courier New";
-  font-size: 20px;
   top: 100px;
   left: ;
 }
@@ -40,9 +40,6 @@ body{
 .totals{
   color: lime;
   text-shadow: 0 0 5px lime;
-  font-weight: lighter;
-  font-family: "Courier New";
-  font-size: 20px;
   margin-top: 25px;
 }
 
@@ -87,12 +84,6 @@ background-size: 20px 20px;
   width: 12.6%;
   float: left;
 }
-.card > img{
-    /* width: 100%;
-    height: 120px; */
-    height: 100%;
-    border-radius: 5px;
-}
 
 .card-present{
   border: 2px solid magenta;
@@ -108,6 +99,25 @@ background-size: 20px 20px;
 .dealer-cards > .card{
   transform: scale(-1, -1);
 }
+
+.player-chips{
+  padding: 50px 0 0 0;
+}
+
+.chips{
+  width: 75px;
+  height: 75px;
+  border-radius: 100%;
+  border: 2px solid cyan;
+  color: cyan;
+  text-align: center;
+  font-size: 35px;
+  line-height: 75px;
+  vertical-align: center;
+  box-shadow: 0 0 5px 3px cyan;
+  text-shadow: 0 0 20px cyan;
+}
+
 
 .btn{
   width: 100%;

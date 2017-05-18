@@ -9,6 +9,7 @@ $(document).ready(function(){
     var heart = "&#9829;";
     var diamond = "&#9830;";
     var presentCards = [];
+    var chipsVal = 50;
 
 
 ///////////////////////////////////////////////
@@ -29,6 +30,7 @@ $(document).ready(function(){
         placeCard("dealer","2",dealersHand[1]);
         calculateTotal(playersHand,"player");
         calculateTotal(dealersHand,"dealer");
+        $(".chips-invisible").addClass("chips");
     });
 
     $(".hit-button").click(function(){
@@ -77,6 +79,7 @@ $(document).ready(function(){
         $(".dealer-total-number").html("0");
         $(".message").text("");
         $(".card").removeClass("card-present");
+        $(".chips-invisible").removeClass("chips");
     };
 
     function checkWin(){
@@ -84,16 +87,22 @@ $(document).ready(function(){
         var dealerTotal = calculateTotal(dealersHand,"dealer");
         if (playerTotal > 21){
             winner = "Player busts and loses";
+            chipsVal -= 5;
         } else if (dealerTotal > 21){
             winner = "Dealer busts, player wins";
+            chipsVal += 5;
         } else if (playerTotal > dealerTotal){
             winner = "Player wins";
+            chipsVal += 5;
         } else if (dealerTotal > playerTotal){
             winner = "Player loses"
+            chipsVal -= 5;
         } else{
-            winner = "It's a tie. Both of you lose.";
+            winner = "It's a tie. Both of you lose, but you keep your chips.";
+
         }
         $(".message").text(winner);
+        $(".chips").text(chipsVal);
     };
 
     function calculateTotal(hand,who){
