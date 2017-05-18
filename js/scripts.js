@@ -8,6 +8,8 @@ $(document).ready(function(){
     var club = "&#9827;";
     var heart = "&#9829;";
     var diamond = "&#9830;";
+    var presentCards = [];
+
 
 ///////////////////////////////////////////////
 ///////////////////////////////////////////////
@@ -69,6 +71,7 @@ $(document).ready(function(){
         shuffleDeck();
         playersHand = [];
         dealersHand = [];
+        presentCards = [];
         $(".card").html("")
         $(".dealer-total-number").html("0");
         $(".dealer-total-number").html("0");
@@ -144,8 +147,21 @@ $(document).ready(function(){
         };
         $(classSelector).html(thisCardValue +"<br>"+ theSymbol);
         $(classSelector).addClass("card-present");
+        presentCards.push($(classSelector));
         $(classSelector).addClass("flicker");
-        setInterval(function(){ ($(classSelector).removeClass("flicker")); }, 250);
+        setTimeout(function(){ ($(classSelector).removeClass("flicker")); }, 250);
+        setInterval(function(){
+            for (let i=0; i<presentCards.length; i++){
+                var specificCard = presentCards[i];
+                var random = Math.floor(Math.random()*100)
+                if (random >= 90){
+                    $(specificCard).addClass("flicker");
+                    setTimeout(function(){ ($(specificCard).removeClass("flicker")); }, 250);
+                }else{
+                    $(specificCard).removeClass("flicker");
+                }
+            }
+        },1000);
         
         // $(classSelector).text(thisCardValue + theSymbol);
     };
