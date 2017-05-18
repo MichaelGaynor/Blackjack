@@ -9,12 +9,12 @@
 
 @keyframes rotatingChip{
   0%{transform: rotateZ(0);}
+  22%{color:rgba(0,255,255,1); text-shadow: 0 0 20px rgba(0,255,255,1); border-color: rgba(0,255,255,1); box-shadow: 0 0 5px 3px rgba(0,255,255,1);}
+  23%{color:rgba(0,255,255,0); text-shadow: 0 0 20px rgba(0,255,255,0); border-color: rgba(0,255,255,0); box-shadow: 0 0 5px 3px rgba(0,255,255,0);}
+  24%{color:rgba(0,255,255,1); text-shadow: 0 0 20px rgba(0,255,255,1); border-color: rgba(0,255,255,1); box-shadow: 0 0 5px 3px rgba(0,255,255,1);}
   25%{color:rgba(0,255,255,1); text-shadow: 0 0 20px rgba(0,255,255,1); border-color: rgba(0,255,255,1); box-shadow: 0 0 5px 3px rgba(0,255,255,1);}
   26%{color:rgba(0,255,255,0); text-shadow: 0 0 20px rgba(0,255,255,0); border-color: rgba(0,255,255,0); box-shadow: 0 0 5px 3px rgba(0,255,255,0);}
   27%{color:rgba(0,255,255,1); text-shadow: 0 0 20px rgba(0,255,255,1); border-color: rgba(0,255,255,1); box-shadow: 0 0 5px 3px rgba(0,255,255,1);}
-  82%{color:rgba(0,255,255,1); text-shadow: 0 0 20px rgba(0,255,255,1); border-color: rgba(0,255,255,1); box-shadow: 0 0 5px 3px rgba(0,255,255,1);}
-  83%{color:rgba(0,255,255,0); text-shadow: 0 0 20px rgba(0,255,255,0); border-color: rgba(0,255,255,0); box-shadow: 0 0 5px 3px rgba(0,255,255,0);}
-  84%{color:rgba(0,255,255,1); text-shadow: 0 0 20px rgba(0,255,255,1); border-color: rgba(0,255,255,1); box-shadow: 0 0 5px 3px rgba(0,255,255,1);}
   100%{transform: rotateZ(360deg);}
 }
 
