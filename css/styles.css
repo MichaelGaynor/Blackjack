@@ -109,6 +109,12 @@ body{
   transform: scale(-1, -1);
 }
 
+.hidden-card{
+  color: rgba(0,0,0,0);
+  text-shadow: none;
+}
+
+
 .player-chips{
   padding: 50px 0 0 0;
 }

@@ -28,8 +28,10 @@ $(document).ready(function(){
         placeCard("dealer","1",dealersHand[0]);
         placeCard("player","2",playersHand[1]);
         placeCard("dealer","2",dealersHand[1]);
+        $(".dealer-cards .card-2").addClass("hidden-card")
         calculateTotal(playersHand,"player");
         calculateTotal(dealersHand,"dealer");
+        $(".dealer-total-count").html("?");
         $(".chips-invisible").addClass("chips");
         $(".chips").text(chipsVal);
     });
@@ -43,6 +45,7 @@ $(document).ready(function(){
     });
 
     $(".stand-button").click(function(){
+        $(".dealer-cards .card-2").removeClass("hidden-card")
         var dealerTotal = calculateTotal(dealersHand,"dealer");
         while(dealerTotal < 17){
             dealersHand.push(theDeck.shift());
