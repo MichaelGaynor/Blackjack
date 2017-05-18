@@ -27,11 +27,6 @@
   animation: pulse .1s infinite;
 }
 
-@font-face {
-    font-family: "Broadway-Engraved";
-    src: url("images/BER.otf") format("opentype");
-}
-
 body{
     background-color:black;
     font-weight: lighter;
