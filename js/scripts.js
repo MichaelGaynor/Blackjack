@@ -31,6 +31,7 @@ $(document).ready(function(){
         calculateTotal(playersHand,"player");
         calculateTotal(dealersHand,"dealer");
         $(".chips-invisible").addClass("chips");
+        $(".chips").text(chipsVal);
     });
 
     $(".hit-button").click(function(){

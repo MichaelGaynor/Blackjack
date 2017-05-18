@@ -7,6 +7,17 @@
   100%{margin-top:35px;}
 }
 
+@keyframes rotatingChip{
+  0%{transform: rotateZ(0);}
+  25%{color:rgba(0,255,255,1); text-shadow: 0 0 20px rgba(0,255,255,1); border-color: rgba(0,255,255,1); box-shadow: 0 0 5px 3px rgba(0,255,255,1);}
+  26%{color:rgba(0,255,255,0); text-shadow: 0 0 20px rgba(0,255,255,0); border-color: rgba(0,255,255,0); box-shadow: 0 0 5px 3px rgba(0,255,255,0);}
+  27%{color:rgba(0,255,255,1); text-shadow: 0 0 20px rgba(0,255,255,1); border-color: rgba(0,255,255,1); box-shadow: 0 0 5px 3px rgba(0,255,255,1);}
+  82%{color:rgba(0,255,255,1); text-shadow: 0 0 20px rgba(0,255,255,1); border-color: rgba(0,255,255,1); box-shadow: 0 0 5px 3px rgba(0,255,255,1);}
+  83%{color:rgba(0,255,255,0); text-shadow: 0 0 20px rgba(0,255,255,0); border-color: rgba(0,255,255,0); box-shadow: 0 0 5px 3px rgba(0,255,255,0);}
+  84%{color:rgba(0,255,255,1); text-shadow: 0 0 20px rgba(0,255,255,1); border-color: rgba(0,255,255,1); box-shadow: 0 0 5px 3px rgba(0,255,255,1);}
+  100%{transform: rotateZ(360deg);}
+}
+
 @keyframes pulse{
   0%{text-shadow: 0 0 20px magenta; color: rgba(0,0,0,0); border-color: rgba(0,0,0,0);}
   100%{text-shadow: 0 -1px 5px magenta; color: rgba(255,0,255,.8); border-color: rgba(255,0,255,.8);}
@@ -108,14 +119,16 @@ background-size: 20px 20px;
   width: 75px;
   height: 75px;
   border-radius: 100%;
-  border: 2px solid cyan;
+  border: 10px dotted cyan;
   color: cyan;
   text-align: center;
   font-size: 35px;
-  line-height: 75px;
+  line-height: 60px;
   vertical-align: center;
   box-shadow: 0 0 5px 3px cyan;
   text-shadow: 0 0 20px cyan;
+  animation: rotatingChip 5s infinite;
+  animation-timing-function: linear;
 }
 
 
