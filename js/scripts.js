@@ -86,19 +86,19 @@ $(document).ready(function(){
         var playerTotal = calculateTotal(playersHand,"player");
         var dealerTotal = calculateTotal(dealersHand,"dealer");
         if (playerTotal > 21){
-            winner = "Player busts and loses";
+            winner = "Player BUSTS and LOSES: -5 chips";
             chipsVal -= 5;
         } else if (dealerTotal > 21){
-            winner = "Dealer busts, player wins";
+            winner = "Dealer BUSTS, player WINS: +5 chips";
             chipsVal += 5;
         } else if (playerTotal > dealerTotal){
-            winner = "Player wins";
+            winner = "Player WINS: +5 chips";
             chipsVal += 5;
         } else if (dealerTotal > playerTotal){
-            winner = "Player loses"
+            winner = "Player LOSES: -5 chips"
             chipsVal -= 5;
         } else{
-            winner = "It's a tie. Both of you lose, but you keep your chips.";
+            winner = "It's a tie. Both of you LOSE, but you keep your chips.";
 
         }
         $(".message").text(winner);
