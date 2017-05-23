@@ -1,6 +1,6 @@
-/* h1{
+h1{
   color: blue;
-} */
+}
 @keyframes hoverBoard{
   0%{margin-top:35px;}
   50%{margin-top:50px;}
