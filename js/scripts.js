@@ -10,7 +10,9 @@ $(document).ready(function(){
     var diamond = "&#9830;";
     var presentCards = [];
     var chipsVal = 50;
+    var haveDealt = false;
     
+    checkDealt();
 
 
 ///////////////////////////////////////////////
@@ -35,11 +37,13 @@ $(document).ready(function(){
         $(".dealer-total-count").html("?");
         $(".chips-invisible").addClass("chips");
         $(".chips").text(chipsVal);
+        haveDealt = true;
+        checkDealt();
     });
 
 
     $(".hit-button").click(function(){
-        if (calculateTotal(playersHand, "player") < 21){
+        if ((calculateTotal(playersHand, "player") < 21) && (haveDealt)){
             playersHand.push(theDeck.shift());
             placeCard("player",playersHand.length,playersHand[playersHand.length-1]);
             calculateTotal(playersHand,"player");
@@ -48,14 +52,18 @@ $(document).ready(function(){
 
 
     $(".stand-button").click(function(){
-        $(".dealer-cards .card-2").removeClass("hidden-card")
-        var dealerTotal = calculateTotal(dealersHand,"dealer");
-        while(dealerTotal < 17){
-            dealersHand.push(theDeck.shift());
-            placeCard("dealer",dealersHand.length,dealersHand[dealersHand.length-1])
-            dealerTotal = calculateTotal(dealersHand,"dealer");
+        if(haveDealt){
+            $(".dealer-cards .card-2").removeClass("hidden-card")
+            var dealerTotal = calculateTotal(dealersHand,"dealer");
+            while(dealerTotal < 17){
+                dealersHand.push(theDeck.shift());
+                placeCard("dealer",dealersHand.length,dealersHand[dealersHand.length-1])
+                dealerTotal = calculateTotal(dealersHand,"dealer");
+            }
+            checkWin();
+            haveDealt = false;
+            checkDealt();
         }
-        checkWin();
     });
 
 
@@ -208,4 +216,15 @@ $(document).ready(function(){
         }
         return newDeck;
     };
+
+
+    function checkDealt(){
+        if(!haveDealt){
+            $(".hit-button").addClass("not-allowed");
+            $(".stand-button").addClass("not-allowed");
+        }else{
+            $(".hit-button").removeClass("not-allowed");
+            $(".stand-button").removeClass("not-allowed");
+        };
+    }
 });

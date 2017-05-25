@@ -28,9 +28,15 @@ h1{
 }
 
 body{
-    /* background-color:black; */
-    background-image: url("https://s-media-cache-ak0.pinimg.com/originals/c3/51/0c/c3510cff5dc5e339d1f1ae125ab86879.jpg");
-    background-size: cover;
+    background-color:black;
+    background-image:
+    radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+    radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+    radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
+    radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
+    background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px; 
+    background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+    /* background-image: url("https://s-media-cache-ak0.pinimg.com/originals/c3/51/0c/c3510cff5dc5e339d1f1ae125ab86879.jpg"); */
     font-weight: lighter;
     font-family: "Courier New";
     font-size: 20px;
@@ -52,10 +58,6 @@ body{
 }
 
 .the-table{
-  /* background-color: #277714; */
-  /* background-image: url("http://images.naldzgraphics.net/2014/08/28-sci-fi-metal-texure.jpg"); */
-  /* border: 5px solid #dcdcdc; */
-  /* background-image: linear-gradient(to top, grey, transparent); */
   box-shadow: 0 0 30px 5px lime;
   border: 15px solid lime;
   border-top: 5px;
@@ -64,8 +66,6 @@ body{
   border-radius: 30%;
   margin-top: 35px;
   padding: 30px 0;
-  /* background: radial-gradient(rgba(0,255,0,1)15%, rgba(0,255,0,0)35%); */
-  /* background: #111; */
   background:
     linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
     linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
@@ -93,7 +93,6 @@ body{
   width: 12.6%;
   float: left;
 }
-
 .card-present{
   border: 2px solid magenta;
   box-shadow: 0 0 10px 3px magenta;
@@ -108,7 +107,6 @@ body{
 .dealer-cards > .card{
   transform: scale(-1, -1);
 }
-
 .hidden-card{
   color: rgba(0,0,0,0);
   text-shadow: none;
@@ -118,7 +116,6 @@ body{
 .player-chips{
   padding: 50px 0 0 0;
 }
-
 .chips{
   width: 75px;
   height: 75px;
@@ -140,9 +137,7 @@ body{
   width: 100%;
   text-align: center;
   background-color: black;
-  /* border: 5px solid #666; */
   border-top: 0;
-  /* border:; */
   outline: none !important;
 }
 .btn.deal-button{
@@ -154,16 +149,23 @@ body{
 .btn.hit-button{
 }
 
-
 .btn:active:focus{
     background-color: lime;
     box-shadow: 0 0 30px 5px lime;
     border: none;
     color: black;
 }
-
 .btn:hover{
     background-color: black;
     color: lime;
     text-shadow: 0 0 5px lime;
+}
+.btn.not-allowed:active:hover{
+    background-color: red;
+    box-shadow: 0 0 30px 5px red;
+    color: black;
+}
+.btn.not-allowed:hover{
+    color: red;
+    text-shadow: 0 0 5px red;
 }
