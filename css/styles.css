@@ -47,12 +47,20 @@ body{
     font-size: 20px;
 }
 
+.modal{
+    top: 30%;
+}
+
+.modal-content{
+    background: rgba(10,10,10,.7);
+}
+
 .message{
     color: cyan;
     text-shadow: 0 0 5px cyan;
     text-align: center;
-    position: fixed;
-    top: 100px;
+    /* position: fixed;
+    top: 100px; */
     left: ;
 }
 

@@ -122,6 +122,7 @@ $(document).ready(function(){
 
         }
         $(".message").text(winner);
+        $('#myModal').modal();
         $(".chips").text(chipsVal);
     };
 
