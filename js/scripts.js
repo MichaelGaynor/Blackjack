@@ -10,6 +10,7 @@ $(document).ready(function(){
     var diamond = "&#9830;";
     var presentCards = [];
     var chipsVal = 50;
+    
 
 
 ///////////////////////////////////////////////
@@ -36,6 +37,7 @@ $(document).ready(function(){
         $(".chips").text(chipsVal);
     });
 
+
     $(".hit-button").click(function(){
         if (calculateTotal(playersHand, "player") < 21){
             playersHand.push(theDeck.shift());
@@ -43,6 +45,7 @@ $(document).ready(function(){
             calculateTotal(playersHand,"player");
         }
     });
+
 
     $(".stand-button").click(function(){
         $(".dealer-cards .card-2").removeClass("hidden-card")
@@ -56,21 +59,13 @@ $(document).ready(function(){
     });
 
 
+
 ///////////////////////////////////////////////
 ///////////////////////////////////////////////
 /////////// UTILITY FUNCTIONS /////////////////
 ///////////////////////////////////////////////
 ///////////////////////////////////////////////
-    // function reset(){
-    //     theDeck = freshDeck.slice();
-    //     shuffleDeck();
-    //     playersHand = [];
-    //     dealersHand = [];
-    //     $(".card").html("")
-    //     $(".dealer-total-number").html("0");
-    //     $(".dealer-total-number").html("0");
-    //     $(".message").text("");
-    // };
+
 
     function reset(){
         theDeck = freshDeck.slice();
@@ -85,6 +80,7 @@ $(document).ready(function(){
         $(".card").removeClass("card-present");
         $(".chips-invisible").removeClass("chips");
     };
+
 
     function checkWin(){
         var playerTotal = calculateTotal(playersHand,"player");
@@ -109,6 +105,7 @@ $(document).ready(function(){
         $(".chips").text(chipsVal);
     };
 
+
     // function checkBust(){
     //     var playerTotal = calculateTotal(playersHand,"player");
     //     if (playerTotal > 21){
@@ -116,6 +113,7 @@ $(document).ready(function(){
     //         chipsVal -= 5;
     //     }
     // };
+
 
     function calculateTotal(hand,who){
         var total = 0;
@@ -142,6 +140,7 @@ $(document).ready(function(){
         $(classSelector).html(total);
         return total;
     };
+
 
     function placeCard(who,where,cardToPlace){
         var classSelector = "." +who+ "-cards .card-" +where;
@@ -183,9 +182,8 @@ $(document).ready(function(){
                 }
             }
         },1000);
-        
-        // $(classSelector).text(thisCardValue + theSymbol);
     };
+
 
     function shuffleDeck(){
         // loop a big number of times, each time through switch two elements in the array
@@ -199,14 +197,11 @@ $(document).ready(function(){
         return theDeck;
     };
 
+
     function createDeck(){
-    // Local var, newDeck. No one knows about this but me
         var newDeck = [];
-        // local var that WILL NOT be changed
         const suits = ["h","s","d","c"];
-        // loop for suits(outer loop)
         for (let s=0; s<suits.length; s++){
-            // loop for card values (inner loop)
             for (let c=1;c<=13;c++){
                 newDeck.push(c + suits[s]);
             }
