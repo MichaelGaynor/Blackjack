@@ -21,24 +21,35 @@ $(document).ready(function(){
 ///////////////////////////////////////////////
 ///////////////////////////////////////////////
     $(".deal-button").click(function(){
-        reset();
-        // Now that the deck is shuffled, update the player and dealer hands
-        playersHand.push(theDeck.shift());
-        dealersHand.push(theDeck.shift());
-        playersHand.push(theDeck.shift());
-        dealersHand.push(theDeck.shift());
-        placeCard("player","1",playersHand[0]);
-        placeCard("dealer","1",dealersHand[0]);
-        placeCard("player","2",playersHand[1]);
-        placeCard("dealer","2",dealersHand[1]);
-        $(".dealer-cards .card-2").addClass("hidden-card")
-        calculateTotal(playersHand,"player");
-        calculateTotal(dealersHand,"dealer");
-        $(".dealer-total-count").html("?");
-        $(".chips-invisible").addClass("chips");
-        $(".chips").text(chipsVal);
-        haveDealt = true;
-        checkDealt();
+        if (!haveDealt){
+            reset();
+            $(".deal-button").removeClass("click-here");
+            // Now that the deck is shuffled, update the player and dealer hands
+            playersHand.push(theDeck.shift());
+            dealersHand.push(theDeck.shift());
+            playersHand.push(theDeck.shift());
+            dealersHand.push(theDeck.shift());
+            placeCard("player","1",playersHand[0]);
+            placeCard("dealer","1",dealersHand[0]);
+            placeCard("player","2",playersHand[1]);
+            placeCard("dealer","2",dealersHand[1]);
+            $(".dealer-cards .card-2").addClass("hidden-card")
+            calculateTotal(playersHand,"player");
+            calculateTotal(dealersHand,"dealer");
+            $(".dealer-total-count").html("?");
+            $(".chips-invisible").addClass("chips");
+            $(".chips").text(chipsVal);
+            haveDealt = true;
+            checkDealt();
+            if(calculateTotal(playersHand, "player") === 21){
+                $(".dealer-cards .card-2").removeClass("hidden-card")
+                var dealerTotal = calculateTotal(dealersHand,"dealer");
+                checkWin();
+                $(".deal-button").addClass("click-here");
+                haveDealt = false;
+                checkDealt();   
+            }
+        }
     });
 
 
@@ -51,7 +62,7 @@ $(document).ready(function(){
     });
 
 
-    $(".stand-button").click(function(){
+    $(".stay-button").click(function(){
         if(haveDealt){
             $(".dealer-cards .card-2").removeClass("hidden-card")
             var dealerTotal = calculateTotal(dealersHand,"dealer");
@@ -61,6 +72,7 @@ $(document).ready(function(){
                 dealerTotal = calculateTotal(dealersHand,"dealer");
             }
             checkWin();
+            $(".deal-button").addClass("click-here");
             haveDealt = false;
             checkDealt();
         }
@@ -221,10 +233,12 @@ $(document).ready(function(){
     function checkDealt(){
         if(!haveDealt){
             $(".hit-button").addClass("not-allowed");
-            $(".stand-button").addClass("not-allowed");
+            $(".stay-button").addClass("not-allowed");
+            $(".deal-button").removeClass("not-allowed");
         }else{
             $(".hit-button").removeClass("not-allowed");
-            $(".stand-button").removeClass("not-allowed");
+            $(".stay-button").removeClass("not-allowed");
+            $(".deal-button").addClass("not-allowed");
         };
     }
 });
