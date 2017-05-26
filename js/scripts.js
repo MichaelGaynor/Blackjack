@@ -118,7 +118,7 @@ $(document).ready(function(){
             winner = "Player LOSES, -5 chips"
             chipsVal -= 5;
         } else{
-            winner = "It's a tie. Both of you LOSE, but you keep your chips.";
+            winner = "It's a tie. Both of you keep your chips.";
 
         }
         $(".message").text(winner);
