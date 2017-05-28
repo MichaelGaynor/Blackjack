@@ -8,6 +8,10 @@ $(document).ready(function(){
     var club = "&#9827;";
     var heart = "&#9829;";
     var diamond = "&#9830;";
+    var sickleHammer = "&#9773";
+    var yinYang = "&#9775";
+    var aesculapiusStaff = "&#9877";
+    var blackFlag = "&#9873";
     var presentCards = [];
     var chipsVal = 50;
     var haveDealt = false;
