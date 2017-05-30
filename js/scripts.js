@@ -12,6 +12,10 @@ $(document).ready(function(){
     var yinYang = "&#9775";
     var aesculapiusStaff = "&#9877";
     var blackFlag = "&#9873";
+    var blackCloud = "&#9729";
+    var umbrella = "&#9730";
+    var blackStar = "&#9733";
+    var whiteStar = "&#9734";
     var presentCards = [];
     var chipsVal = 50;
     var haveDealt = false;
