@@ -16,6 +16,10 @@ $(document).ready(function(){
     // var umbrella = "&#9730";
     // var blackStar = "&#9733";
     // var whiteStar = "&#9734";
+    // var newImageOne = 
+    // var newImageTwo = 
+    // var newImageThree = 
+    // var newImageFour =
     var presentCards = [];
     var chipsVal = 50;
     var haveDealt = false;
